@@ -1,0 +1,90 @@
+<%- include('./includes/nav.ejs') %>
+    <div class="main-content-container container-fluid px-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Event Details</h6>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-sm-8 container-fluid">
+                        <form action="<% if(editing) { %>/admin/edit-webinar<% } else { %>/admin/add-webinar<% } %>" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Event Title</span>
+                                    </div>
+                                    <input type="text" value="<% if(editing){ %><%= w.title %> <% } %>" class="form-control" required placeholder="Event Title" id="title" name="title" aria-label="Event Title" aria-describedby="basic-addon1"> </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Event Date</span>
+                                    </div>
+                                    <input type="date" class="form-control" value="<% if(editing){ %><%= date %><% } %>" required placeholder="Event Date" aria-label="Event Date" id="date" name="date" aria-describedby="basic-addon1"> </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Event Time</span>
+                                    </div>
+                                    <input type="time" value="<% if(editing){ %><%= w.time %><% } %>" class="form-control" required placeholder="Event Time" id="time" name="time" aria-label="Event Time" aria-describedby="basic-addon1"> </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Speaker Name</span>
+                                    </div>
+                                    <input type="text" value="<% if(editing){ %><%= w.speakerName %><% } %>" class="form-control" required placeholder="Speaker Name" aria-label="Speaker Name" aria-describedby="basic-addon1" id="speaker-name" name="speakerName">                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Speaker Description</span>
+                                    </div>
+                                    <input type="text" class="form-control" value="<% if(editing){ %><%= w.speakerDescription %><% } %>" required placeholder="Speaker Description" id="speaker-description" name="speakerDescription" aria-label="Speaker Description" aria-describedby="basic-addon1">                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Speaker Image</span>
+                                    </div>
+                                    <input type="file" class="form-control" <% if(!editing){ %> required
+                                    <% } %> placeholder="Speaker Image" id="image" name="image" aria-label="Speaker Image" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Event Description:</label>
+                                <textarea class="form-control" rows="5" id="comment" required name="description"><% if(editing){ %><%= w.description %><% } %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="attend">Who should attend?</label>
+                                <textarea class="form-control" rows="5" id="attend" required name="attend"><% if(editing){ %><%= w.attend %><% } %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="points">Key points to be discussed:</label>
+                                <textarea class="form-control" rows="5" id="points" required name="points"><% if(editing){ %><%= w.points %><% } %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Social Media URL:</span>
+                                    </div>
+                                    <input type="url" class="form-control" required placeholder="Social Media URL" value="<% if(editing){ %><%= w.share %><% } %>" id="share" name="share" aria-label="Social Media URL" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <% if(editing){ %>
+                                <input type="hidden" name="_id" value="<%= w._id %>">
+                                <% } %>
+                                    <div class="form-group">
+                                        <div class="form-group ">
+                                            <button type="submit" class="mb-2 btn btn-md btn-success mr-1">Submit</button>
+                                        </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('./includes/foot.ejs') %>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+</head>
+
+<body>
+    <script src="https://unpkg.com/tripetto-collector"></script>
+    <script src="/profile.js"></script>
+    <script src="https://unpkg.com/tripetto-services"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        TripettoServices.init({
+            token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiUGdJcjlrZm8wTEJZN0NFaVhLaGV0eGNLZ3ZJWGxYa3QxRCtnV0FyMlA0MD0iLCJkZWZpbml0aW9uIjoiZ3E3RG1ZcmpVbFB6QWhDOEQ2aTJqMnZERUtKOVFHQ1Vvb0hzRSt3c3g4bz0iLCJ0eXBlIjoiY29sbGVjdCJ9.kaMqkv91KLbi3BKUwWIAzPOphI9prLxhHCI0UnMnq2w"
+        });
+
+        TripettoCollectorRolling.run({
+            element: document.body,
+            definition: TripettoServices.definition,
+            style: TripettoServices.style,
+            onFinish: function(instance) {
+                // TODO: Handle the collector results
+                // For example retrieve the results as a CSV-file:
+                var csv = TripettoCollector.Export.CSV(instance);
+                // Or retrieve the individual fields:
+                var fields = TripettoCollector.Export.fields(instance);
+                let d = []
+                fields.fields.forEach(e => {
+                    let b = {
+                        question: e.name,
+                        answer: e.string
+                    }
+                    d.push(b)
+                });
+                $.ajax({
+                    url: '/admin/startup-form',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        "questions": d
+                    }),
+                    success: function(response) {
+                        location.replace('/admin/');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

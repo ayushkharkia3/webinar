@@ -1,0 +1,124 @@
+<%- include('./includes/nav.ejs') %>
+    <style>
+        label {
+            padding-top: 5px;
+            margin: auto;
+            margin-left: 10px;
+            margin-right: 20px;
+        }
+        
+        .dataTables_info {
+            margin: auto;
+            margin-left: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <div class="main-content-container container-fluid px-4">
+        <!-- Page Header -->
+        <div class="page-header row no-gutters py-4">
+            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <span class="text-uppercase page-subtitle">Overview</span>
+                <h3 class="page-title">
+                    <%= title %>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                    <div class="card-body p-0 d-flex">
+                        <div class="d-flex flex-column m-auto">
+                            <div class="stats-small__data text-center">
+                                <span class="stats-small__label text-uppercase">Registerations</span>
+                                <h6 class="stats-small__value count my-3">
+                                    <%= user %>
+                                </h6>
+                            </div>
+                        </div>
+                        <canvas height="120" class="blog-overview-stats-small-1"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                    <div class="card-body p-0 d-flex">
+                        <div class="d-flex flex-column m-auto">
+                            <div class="stats-small__data text-center">
+                                <span class="stats-small__label text-uppercase">Views</span>
+                                <h6 class="stats-small__value count my-3">
+                                    <%= clicks %>
+                                </h6>
+                            </div>
+                        </div>
+                        <canvas height="120" class="blog-overview-stats-small-2"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                    <div class="card-body p-0 d-flex">
+                        <div class="d-flex flex-column m-auto">
+                            <div class="stats-small__data text-center">
+                                <span class="stats-small__label text-uppercase">Shares</span>
+                                <h6 class="stats-small__value count my-3">
+                                    <%= shares %>
+                                </h6>
+                            </div>
+                        </div>
+                        <canvas height="120" class="blog-overview-stats-small-3"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Header -->
+        <!-- Default Light Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0" style="float: left;">Registered Users</h6>
+                        <button style="float: right;" class="btn btn-info">Export</button>
+                    </div>
+                    <div class="card-body p-0 pb-3 text-center">
+                        <table id="dtBasicExample" class="table mb-0 table-hover" cellspacing="0" width="100%">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col" class="border-0">#</th>
+                                    <th scope="col" class="border-0">Name</th>
+                                    <th scope="col" class="border-0">Email</th>
+                                    <th scope="col" class="border-0">Contact Number</th>
+                                    <th scope="col" class="border-0">Whatsapp Number</th>
+                                    <th scope="col" class="border-0">Registered At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i=1;i<=users.length;i++) { %>
+                                    <tr>
+                                        <td>
+                                            <%= i %>
+                                        </td>
+                                        <td>
+                                            <%= users[user-i].name %>
+                                        </td>
+                                        <td>
+                                            <%= users[user-1].email %>
+                                        </td>
+                                        <td>
+                                            <%= users[user-1].contact %>
+                                        </td>
+                                        <td>
+                                            <%= users[user-1].whatsappNo %>
+                                        </td>
+                                        <td>
+                                            <%= users[user-1].registeredAt %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./includes/foot.ejs') %>

@@ -1,0 +1,183 @@
+<%- include('./includes/nav.ejs') %>
+    <div class="main-content-container container-fluid px-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Event Details</h6>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-sm-8 container-fluid">
+                        <form action="<% if(editing) { %>/admin/edit-internship<% } else { %>/admin/add-internship<% } %>" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Profile :</span>
+                                    </div>
+                                    <select name="profile" class="form-control" id="profile" required>
+                                        <option value="accounts" <% if(editing && u.profile === 'accounts') {%> selected <% } %> >Accounts</option>
+                                        <option value="acting" <% if(editing && u.profile === 'acting') {%> selected <% } %> >Acting</option>
+                                        <option value="animation" <% if(editing && u.profile === 'animation') {%> selected <% } %>>animation</option>
+                                        <option value="architecture" <% if(editing && u.profile === 'architecture') {%> selected <% } %>>Architecture</option>
+                                        <option value="big data" <% if(editing && u.profile === 'big data') {%> selected <% } %>>Big Data</option>
+                                        <option value="brand management" <% if(editing && u.profile === 'brand management') {%> selected <% } %> >Brand Management</option>
+                                    <option value="business development" <% if(editing && u.profile === 'business development') {%> selected <% } %> >Business Development</option>
+                                    <option value="campus ambassador" <% if(editing && u.profile === 'campus ambassador') {%> selected <% } %>>Campus Ambassador</option>
+                                    <option value="chartered accountancy" <% if(editing && u.profile === 'charted accountancy') {%> selected <% } %> >Chartered Accountancy (CA)</option>
+                                    <option value="content writing" <% if(editing && u.profile === 'content writing') {%> selected <% } %>>Content Writing</option>
+                                    <option value="customer service" <% if(editing && u.profile === 'customer service') {%> selected <% } %> >Customer Service</option>
+                                    <option value="data analytics" <% if(editing && u.profile === 'data analytics') {%> selected <% } %> >Data Analytics</option>
+                                    <option value="data entry" <% if(editing && u.profile === 'data entry') {%> selected <% } %> >Data Entry</option>
+                                    <option value="data science" <% if(editing && u.profile === 'data science') {%> selected <% } %> >Data Science</option>
+                                    <option value="digital marketing" <% if(editing && u.profile === 'digital marketing') {%> selected <% } %> >Digital Marketing</option>
+                                    <option value="event management" <% if(editing && u.profile === 'event management') {%> selected <% } %> >Event Management</option>
+                                        <option value="fashion design" <% if(editing && u.profile === 'fashion design') {%> selected <% } %> >Fashion design</option>
+                                    <option value="film making" <% if(editing && u.profile === 'film making') {%> selected <% } %>>Film making</option>
+                                        <option value="finance" <% if(editing && u.profile === 'finance') {%> selected <% } %> >Finance</option>
+                                        <option value="game development" <% if(editing && u.profile === 'game development') {%> selected <% } %> >Game Development</option>
+                                        <option value="graphic design" <% if(editing && u.profile === 'graphic design') {%> selected <% } %> >Graphic Design</option>
+                                        <option value="hotel management" <% if(editing && u.profile === 'hotel management') {%> selected <% } %> >Hotel Management</option>
+                                        <option value="human resources" <% if(editing && u.profile === 'human resources') {%> selected <% } %> >Human Resources (HR)</option>
+                                        <option value="law" <% if(editing && u.profile === 'law') {%> selected <% } %> >Law</option>
+                                        <option value="marketing" <% if(editing && u.profile === 'marketing') {%> selected <% } %> >Marketing</option>
+                                        <option value="media" <% if(editing && u.profile === 'media') {%> selected <% } %> >Media</option>
+                                        <option value="mobile app development" <% if(editing && u.profile === 'mobile app development') {%> selected <% } %> >Mobile App Development</option>
+                                        <option value="operations" <% if(editing && u.profile === 'operations') {%> selected <% } %> >Operations</option>
+                                        <option value="photography" <% if(editing && u.profile === 'photography') {%> selected <% } %> >Photography</option>
+                                        <option value="research" <% if(editing && u.profile === 'research') {%> selected <% } %> >Research</option>
+                                        <option value="robotics" <% if(editing && u.profile === 'robotics') {%> selected <% } %>  >Robotics</option>
+                                        <option value="sales" <% if(editing && u.profile === 'sales') {%> selected <% } %> >Sales</option>
+                                        <option value="seo" <% if(editing && u.profile === 'seo') {%> selected <% } %> >SEO</option>
+                                        <option value="social media marketing" <% if(editing && u.profile === 'social media marketing') {%> selected <% } %> >Social Media Marketing</option>
+                                        <option value="software development" <% if(editing && u.profile === 'software development') {%> selected <% } %> >Software Development</option>
+                                        <option value="supply chain management" <% if(editing && u.profile === 'supply chain management') {%> selected <% } %> >Supply Chain Management</option>
+                                        <option value="teaching" <% if(editing && u.profile === 'teaching') {%> selected <% } %> >Teaching</option>
+                                        <option value="uidesign" <% if(editing && u.profile === 'uidesign') {%> selected <% } %> >UI/UX Design</option>
+                                        <option value="video making editing" <% if(editing && u.profile === 'video making editing') {%> selected <% } %> >Video Maing/ Editing</option>
+                                        <option value="web development" <% if(editing && u.profile === 'web development') {%> selected <% } %> >Web Development</option>
+                                        <option value="others" <% if(editing && u.profile === 'others') {%> selected <% } %> >Others</option>
+                                </select></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Place:</span>
+                                    </div>
+                                    <select name="state" class="form-control" id="state" required>
+                                        <option value="work from home" <% if(editing && u.state === 'work from home') {%> selected <% } %> >Work From Home</option>
+                                        <option value='Andhra Pradesh' <% if(editing && u.state === 'Andhra Pradesh') {%> selected <% } %> >Andhra Pradesh</option>
+<option value='Andaman and Nicobar Islands' <% if(editing && u.state === 'Andaman and Nicobar Islands') {%> selected <% } %> >Andaman and Nicobar Islands</option>
+<option value='Arunachal Pradesh' <% if(editing && u.state === 'Arunachal Pradesh') {%> selected <% } %> >Arunachal Pradesh</option>
+<option value='Assam' <% if(editing && u.state === 'Assam') {%> selected <% } %> >Assam</option>
+<option value='Bihar' <% if(editing && u.state === 'Bihar') {%> selected <% } %> >Bihar</option>
+<option value='Chandigarh' <% if(editing && u.state === 'Chandigarh') {%> selected <% } %> >Chandigarh</option>
+<option value='Chhattisgarh' <% if(editing && u.state === 'Chhattisgarh') {%> selected <% } %> >Chhattisgarh</option>
+<option value='Dadar and Nagar Haveli' <% if(editing && u.state === 'Dadar and Nagar Haveli') {%> selected <% } %> >Dadar and Nagar Haveli</option>
+<option value='Daman and Diu' <% if(editing && u.state === 'Daman and Diu') {%> selected <% } %> >Daman and Diu</option>
+<option value='Delhi'<% if(editing && u.state === 'Delhi') {%> selected <% } %>  >Delhi</option>
+<option value='Lakshadweep' <% if(editing && u.state === 'Lakshadweep') {%> selected <% } %> >Lakshadweep</option>
+<option value='Puducherry' <% if(editing && u.state === 'Puducherry') {%> selected <% } %> >Puducherry</option>
+<option value='Goa' <% if(editing && u.state === 'Goa') {%> selected <% } %> >Goa</option>
+<option value='Gujarat' <% if(editing && u.state === 'Gujarat') {%> selected <% } %> >Gujarat</option>
+<option value='Haryana' <% if(editing && u.state === 'Haryana') {%> selected <% } %> >Haryana</option>
+<option value='Himachal Pradesh' <% if(editing && u.state === 'Himachal Pradesh') {%> selected <% } %> >Himachal Pradesh</option>
+<option value='Jammu and Kashmir' <% if(editing && u.state === 'Jammu and Kashmir') {%> selected <% } %> >Jammu and Kashmir</option>
+<option value='Jharkhand' <% if(editing && u.state === 'Jharkhand') {%> selected <% } %> >Jharkhand</option>
+<option value='Karnataka' <% if(editing && u.state === 'Karnataka') {%> selected <% } %> >Karnataka</option>
+<option value='Kerala' <% if(editing && u.state === 'Kerala') {%> selected <% } %> >Kerala</option>
+<option value='Madhya Pradesh' <% if(editing && u.state === 'Madhya Pradesh') {%> selected <% } %> >Madhya Pradesh</option>
+<option value='Maharashtra' <% if(editing && u.state === 'Maharashtra') {%> selected <% } %> >Maharashtra</option>
+<option value='Manipur' <% if(editing && u.state === 'Manipur') {%> selected <% } %> >Manipur</option>
+<option value='Meghalaya' <% if(editing && u.state === 'Meghalaya') {%> selected <% } %> >Meghalaya</option>
+<option value='Mizoram' <% if(editing && u.state === 'Mizoram') {%> selected <% } %> >Mizoram</option>
+<option value='Nagaland' <% if(editing && u.state === 'Nagaland') {%> selected <% } %> >Nagaland</option>
+<option value='Odisha' <% if(editing && u.state === 'Odisha') {%> selected <% } %> >Odisha</option>
+<option value='Punjab' <% if(editing && u.state === 'Punjab') {%> selected <% } %> >Punjab</option>
+<option value='Rajasthan' <% if(editing && u.state === 'Rajasthan') {%> selected <% } %> >Rajasthan</option>
+<option value='Sikkim' <% if(editing && u.state === 'Sikkim') {%> selected <% } %> >Sikkim</option>
+<option value='Tamil Nadu' <% if(editing && u.state === 'Tamil Nadu') {%> selected <% } %> >Tamil Nadu</option>
+<option value='Telangana' <% if(editing && u.state === 'Telangana') {%> selected <% } %> >Telangana</option>
+<option value='Tripura' <% if(editing && u.state === 'Tripura') {%> selected <% } %> >Tripura</option>
+<option value='Uttar Pradesh' <% if(editing && u.state === 'Uttar Pradesh') {%> selected <% } %> >Uttar Pradesh</option>
+<option value='Uttarakhand' <% if(editing && u.state === 'Uttarakhand') {%> selected <% } %> >Uttarakhand</option>
+<option value='West Bengal' <% if(editing && u.state === 'West Bengal') {%> selected <% } %> >West Bengal</option>
+                                    </select></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Duration</span>
+                                    </div>
+                                    <input type="text" class="form-control" value="<%= (editing)?u.duration:'' %>" required placeholder="Duration" id="time" name="duration" aria-label="Duration" aria-describedby="basic-addon1"> </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">No. of Openings</span>
+                                    </div>
+                                    <input type="number" class="form-control" required placeholder="No. of Openings" value="<%= (editing)?u.number:0 %>" aria-label="No. of Openings" aria-describedby="basic-addon1" id="speaker-name" name="no"> </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Stipend per month</span>
+                                    </div>
+                                    <input type="text" class="form-control" required placeholder="Use unpaid in case no stipend" value="<%= (editing)?u.stipend:'' %>" id="speaker-description" name="stipend" aria-label="Speaker Description" aria-describedby="basic-addon1">                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Start Date</span>
+                                    </div>
+                                    <input type="date" class="form-control" required placeholder="Start dare" value="<%= (editing)?date:'' %>" id="speaker-description" name="start" aria-label="Speaker Description" aria-describedby="basic-addon1"> </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <fieldset>
+                                        Perks:
+                                        <br>
+                                        <input type="checkbox" name="certificate" <% if(editing && u.perks.includes( 'Certificate')) {%> checked
+                                        <%} %> >&nbsp; Certificate<br>
+                                            <input type="checkbox" name="letter" <% if(editing && u.perks.includes( 'Letter of Recommendation')) {%> checked
+                                            <%} %> >&nbsp; Letter of Recommendation<br>
+                                                <input type="checkbox" name="flexible" <% if(editing && u.perks.includes( 'Flexible Work hours')) {%> checked
+                                                <%} %> >&nbsp; Flexible work hours
+                                                    <br>
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Work Description:</label>
+                                    <textarea class="form-control" rows="5" id="comment" required name="description"><% if(editing) {%><%= u.description %><% } %></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attend">Skills required:</label>
+                                    <textarea class="form-control" rows="5" id="attend" required name="skills"><% if(editing) {%><%= u.skills %><% } %></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="points">Any question for interns?(Leave it blank if you dont have.)</label>
+                                    <textarea class="form-control" rows="5" id="points" name="questions"><% if(editing) {%><%= u.questions %><% } %></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">Company Logo</span>
+                                        </div>
+                                        <input type="file" class="form-control" <% if(!editing){ %> required
+                                        <% } %> placeholder="Company Logo" id="image" name="image" aria-label="Company Logo" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <% if(editing){ %>
+                                    <input type="hidden" name="_id" value="<%= u._id %>">
+                                    <% } %>
+                                        <div class="form-group">
+                                            <div class="form-group ">
+                                                <button type="submit" class="mb-2 btn btn-md btn-success mr-1">Submit</button>
+                                            </div>
+                        </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include('./includes/foot.ejs') %>
